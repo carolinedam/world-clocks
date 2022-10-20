@@ -19,4 +19,27 @@ function showTimes() {
 }
 
 showTimes();
-setInterval(showTimes, 1);
+setInterval(showTimes, 1000);
+
+function displayCity(event) {
+  let citySelection = event.target.value;
+  let cityDisplay = citySelection.split("/")[1].replace("_", " ");
+  let timeDisplay = document.querySelector("#cities");
+  timeDisplay.innerHTML = `<div id="cities">
+        <div class="city">
+          <div>
+            <h2>${cityDisplay}</h2>
+            <div class="date">${moment()
+              .tz(citySelection)
+              .format("MMMM Do, YYYY")}</div>
+          </div>
+          <div class="time">${moment()
+            .tz(citySelection)
+            .format("h:mm:ss [<small>] A[<small>]")}</div>
+        </div>
+
+      </div>`;
+}
+
+let chosenCity = document.querySelector("select");
+chosenCity.addEventListener("change", displayCity);
