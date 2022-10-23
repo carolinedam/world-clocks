@@ -23,6 +23,9 @@ setInterval(showTimes, 1000);
 
 function displayCity(event) {
   let citySelection = event.target.value;
+  if (citySelection === "current") {
+    citySelection = moment.tz.guess();
+  }
   let cityDisplay = citySelection.split("/")[1].replace("_", " ");
   let timeDisplay = document.querySelector("#cities");
   timeDisplay.innerHTML = `<div id="cities">
