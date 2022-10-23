@@ -3,7 +3,9 @@ function showTimes() {
   let newYorkDateElement = newYorkCityElement.querySelector(".date");
   let newYorkTimeElement = newYorkCityElement.querySelector(".time");
 
-  newYorkDateElement.innerHTML = moment().format("MMMM Do, YYYY");
+  newYorkDateElement.innerHTML = moment()
+    .tz("America/New_York")
+    .format("MMMM Do, YYYY");
   newYorkTimeElement.innerHTML = moment()
     .tz("America/New_York")
     .format("h:mm:ss [<small>]A[</small>]");
@@ -12,10 +14,22 @@ function showTimes() {
   let parisDateElement = parisCityElement.querySelector(".date");
   let parisTimeElement = parisCityElement.querySelector(".time");
 
-  parisDateElement.innerHTML = moment().format("MMMM Do, YYYY");
+  parisDateElement.innerHTML = moment()
+    .tz("Europe/Paris")
+    .format("MMMM Do, YYYY");
   parisTimeElement.innerHTML = moment()
     .tz("Europe/Paris")
     .format("h:mm:ss [<small>]A[</small>]");
+
+  let tokyoCityElement = document.querySelector("#tokyo");
+  let tokyoDateElement = tokyoCityElement.querySelector(".date");
+  let tokyoTimeElement = tokyoCityElement.querySelector(".time");
+  tokyoTimeElement.innerHTML = moment
+    .tz("Asia/Tokyo")
+    .format("h:mm:ss [<small>] A [</small>]");
+  tokyoDateElement.innerHTML = moment()
+    .tz("Asia/Tokyo")
+    .format("MMMM Do, YYYY");
 }
 
 showTimes();
@@ -41,7 +55,8 @@ function displayCity(event) {
             .format("h:mm:ss [<small>] A[<small>]")}</div>
         </div>
 
-      </div>`;
+      </div> 
+      <a href="/">All cities</a>`;
 }
 
 let chosenCity = document.querySelector("select");
